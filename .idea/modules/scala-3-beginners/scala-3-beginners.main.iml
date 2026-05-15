@@ -4,17 +4,17 @@
     <option name="name" value="scala-3-beginners.main" />
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_21">
-    <output url="file://$MODULE_DIR$/../../../target/scala-3.0.0/classes" />
+    <output url="file://$MODULE_DIR$/../../../target/scala-3.3.1/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../src/main/scala" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/../../../target/scala-3.0.0/resource_managed/main" />
-    <content url="file://$MODULE_DIR$/../../../target/scala-3.0.0/src_managed/main" />
+    <content url="file://$MODULE_DIR$/../../../target/scala-3.3.1/resource_managed/main" />
+    <content url="file://$MODULE_DIR$/../../../target/scala-3.3.1/src_managed/main" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="sbt: scala-sdk-3.0.0" level="project" />
-    <orderEntry type="library" name="sbt: org.scala-lang:scala3-library_3:3.0.0:jar" level="project" />
-    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.5:jar" level="project" />
+    <orderEntry type="library" name="sbt: scala-sdk-3.3.1" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala3-library_3:3.3.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.13.10:jar" level="project" />
   </component>
 </module>
