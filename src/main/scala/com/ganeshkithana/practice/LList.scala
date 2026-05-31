@@ -42,6 +42,8 @@ object LListTest {
 
     val first3Num_v2 = empty.add(1).add(2).add(3)
     println(first3Num_v2)
+    println(first3Num_v2.head)
+    println(first3Num_v2.tail)
     println(first3Num_v2.isEmpty)
   }
 }
