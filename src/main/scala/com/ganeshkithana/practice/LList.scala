@@ -31,6 +31,24 @@ class Cons[T](override val head: T, override val tail: LList[T]) extends LList[T
   }
 }
 
+/**
+ Exercise: LList extension
+
+ 1.  Generic trait Predicate[T] with a little method test(T) => Boolean
+ 2.  Generic trait Transformer[A, B] with a method transform(A) => B
+ 3.  LList:
+ - map(transformer: Transformer[A, B]) => LList[B]
+ - filter(predicate: Predicate[A]) => LList[A]
+ - flatMap(transformer from A to LList[B]) => LList[B]
+
+ class EvenPredicate extends Predicate[Int]
+ class StringToIntTransformer extends Transformer[String, Int]
+
+ [1,2,3].map(n * 2) = [2,4,6]
+ [1,2,3,4].filter(n % 2 == 0) = [2,4]
+ [1,2,3].flatMap(n => [n, n+1]) => [1,2, 2,3, 3,4]
+ */
+
 object LListTest {
   def main(args: Array[String]): Unit = {
     val empty = new Empty[Int]
