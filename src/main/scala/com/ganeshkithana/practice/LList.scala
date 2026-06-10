@@ -149,6 +149,14 @@ class DoublerList extends Transformer[Int, LList[Int]] {
 
 val doublerList = new DoublerList().transform(5)
 
+object LList {
+  def find[A](list: LList[A], predicate: Predicate[A]): A = {
+    if(list.isEmpty) throw new NoSuchElementException
+    else if(predicate.test(list.head)) list.head
+    else find(list.tail, predicate)
+  }
+}
+
 object LListTest {
   def main(args: Array[String]): Unit = {
     val empty = Empty[Int]()
@@ -201,5 +209,12 @@ object LListTest {
     // flatmap testing
     val flattenedList = first3Num.flatMap(new DoublerList)
     println(flattenedList)
+
+    // find test
+    println(LList.find[Int](first3Num, evenPredicate)) // 2
+
+    // println(LList.find[Int](first3Num, new Predicate[Int] {
+    //   override def test(element: Int): Boolean = element > 5
+    // })) // throws a NSEException
   }
 }
