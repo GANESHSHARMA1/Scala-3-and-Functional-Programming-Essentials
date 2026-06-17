@@ -20,10 +20,10 @@ object PackagesImports { // top - level
 
   // import everything
   import com.ganeshkithana.practice.*
-  val aPredicate: Predicate[Int] = ???
+  val aPredicate: Cons[Int] = ???
 
   // import multiple symbols
-  import PhysicsConstants.{SPEED_OF_LIGHT, EARTH_GRAVITY}
+  import PhysicsConstants.SPEED_OF_LIGHT
   val c = SPEED_OF_LIGHT
 
   // import everything but something
@@ -31,9 +31,7 @@ object PackagesImports { // top - level
     import PhysicsConstants.{PLANCK as _, *}
     // val planck = PLANCK // will not work
     val c = SPEED_OF_LIGHT
-  }
-
-  import com.ganeshkithana.part2oop.* // import the mol and computeMyLife
+  } // import the mol and computeMyLife
   val mol = meaningOfLife
 
   // default imports
@@ -64,7 +62,7 @@ object PackagesImports { // top - level
 // usually organizing "utils" and constants in separate objects
 object PhysicsConstants {
   // constants
-  val SPEED_OF_LIGHT = 299792458
-  val PLANCK = 6.62e-34 // scientific notation
-  val EARTH_GRAVITY = 9.8
+  val SPEED_OF_LIGHT: Double = 299792458
+  val PLANCK: Double = 6.62e-34 // scientific notation
+  val EARTH_GRAVITY: Double = 9.8
 }
