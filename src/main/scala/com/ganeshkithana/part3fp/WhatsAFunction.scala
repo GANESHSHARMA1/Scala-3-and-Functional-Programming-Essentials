@@ -59,15 +59,20 @@ object WhatsAFunction {
     }
   }
 
+  val superAdder_v2: Int => (Int => Int) = x => y => x + y
+
   // function values != methods
 
   val adder2 = superAdder(2)
   val anAddition_v2 = adder2(43) // 45
   // currying
   val anAddition_v3 = superAdder(2)(43)
+  val anAddition_v4= superAdder_v2(2)(43)
 
   def main(args: Array[String]): Unit = {
     println(concatenator("I Love ", "Scala"))
     println(anAddition_v2)
+    println(anAddition_v3)
+    println(anAddition_v4)
   }
 }

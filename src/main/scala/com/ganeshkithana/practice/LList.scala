@@ -176,22 +176,29 @@ object LListTest {
     val someStrings = Cons[String]("Scala", Cons[String]("Java", Empty()))
     println(someStrings)
 
-    val evenPredicate = new ((Int) => Boolean) {
-      override def apply(element: Int): Boolean =
-        element % 2 == 0
-    }
-
+//    val evenPredicate = new ((Int) => Boolean) {
+//      override def apply(element: Int): Boolean =
+//        element % 2 == 0
+//    }
+//
+//    println(evenPredicate(24))
+//
+//    val doubler = new Function1[Int, Int] {
+//      override def apply(value: Int): Int =
+//        value * 2
+//    }
+//
+//    val doublerList = new Function1[Int, LList[Int]] {
+//      override def apply(value: Int): LList[Int] =
+//        Cons(value, Cons(value + 1, Empty()))
+//    }
+    
+    val evenPredicate: Int => Boolean = (x: Int) => x % 2 == 0
     println(evenPredicate(24))
-
-    val doubler = new Function1[Int, Int] {
-      override def apply(value: Int): Int =
-        value * 2
-    }
-
-    val doublerList = new Function1[Int, LList[Int]] {
-      override def apply(value: Int): LList[Int] =
-        Cons(value, Cons(value + 1, Empty()))
-    }
+    
+    val doubler: Int => Int = x => x * 2
+    
+    val doublerList: Int => LList[Int] = value => Cons(value, Cons(value + 1, Empty()))
 
     println(doubler(24))
     println(doublerList)
