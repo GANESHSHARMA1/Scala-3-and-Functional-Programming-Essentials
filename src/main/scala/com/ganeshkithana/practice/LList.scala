@@ -20,6 +20,8 @@ abstract class LList[A] {
 
   def filter(predicate: A => Boolean): LList[A]
 
+  def withFilter(predicate: A => Boolean): LList[A] = filter(predicate)
+
   def flatMap[B](transformer: A => LList[B]): LList[B]
 
   // HOFs and curries exercises
@@ -294,5 +296,10 @@ object LListTest {
     println(zippedList)
     println(first3Num.foldLeft(0)((x, y) => x + y))
     println(first3Num.foldLeft(0)(_ + _))
+
+    // For-Comprehensions testing
+    val forComp = for {
+      num <- first3Num
+    } println(num)
   }
 }
