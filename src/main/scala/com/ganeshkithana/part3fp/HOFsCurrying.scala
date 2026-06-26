@@ -72,12 +72,65 @@ object HOFsCurrying {
    *      1 + 2 = 3
    *      3 + 3 = 6
    *      6 + 4 = 10
+   *
+   * 2.
+   *    - toCurry(f: (Int, Int) => Int): Int => Int => Int
+   *    - fromCurry(f: (Int => Int => Int)): (Int, Int) => Int
+   *
+   * 3.
+   *    - compose(f,g) => x => f(g(x))
+   *    - andThen(f,g) => x => g(f(x))
    * */
+
+  // 2.
+  def toCurry(f: (Int, Int) => Int) : Int => Int => Int =
+    x => y => f(x, y)
+
+  def toCurry_v2[A, B, C](f: (A, B) => C): A => B => C =
+    x => y => f(x, y)
+
+  val superAdder_v2 = toCurry(_ + _) // same as superAdder
+  val superAdder_v3 = toCurry_v2[Int, Int, Int](_ + _) // identical
+
+  def fromCurry(f: (Int => Int => Int)): (Int, Int) => Int =
+    (x, y) => f(x)(y)
+
+  def fromCurry_v2[A, B, C](f: (A => B => C)): (A, B) => C =
+    (x, y) => f(x)(y)
+
+  val simpleAdder = fromCurry(superAdder)
+  val simpleAdder_v2 = fromCurry_v2[Int, Int, Int](superAdder)
+
+  // 3.
+  def compose(f: Int => Int, g: Int => Int): Int => Int =
+    x => f(g(x))
+
+  def compose_v2[A, B, C](f: B => C, g: A => B): A => C =
+    x => f(g(x))
+
+  val incrementer = (x: Int) => x + 1
+  val doubler = (x: Int) => 2 * x
+  val composeApplication = compose(incrementer, doubler)
+  val composeApplication_v2 = compose_v2(incrementer, doubler)
+
+  def andThen(f: Int => Int, g: Int => Int): Int => Int =
+    x => g(f(x))
+
+  def andThen_v2[A, B, C](f: A => B, g: B => C): A => C =
+    x => g(f(x))
+
+  val andThenApplication = andThen(incrementer, doubler)
+  val andThenApplication_v2 = andThen_v2(incrementer, doubler)
 
   def main(args: Array[String]): Unit = {
     println(tenThousand)
     println(oneHundred)
     println(standardFormat(Math.PI))
     println(preciseFormat(Math.PI))
+    println(simpleAdder(2, 68)) // 70
+    println(composeApplication(12)) // 25 = (12 * 2) + 1
+    println(composeApplication_v2(12)) // 25 = (12 * 2) + 1
+    println(andThenApplication(12)) // 26 = (12 + 1) * 2
+    println(andThenApplication_v2(12)) // 26 = (12 + 1) * 2
   }
 }
